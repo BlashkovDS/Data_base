@@ -1,0 +1,26 @@
+-- Практическое задание по теме “Управление БД”
+-- 1. Установите СУБД MySQL. Создайте в домашней директории файл .my.cnf, задав в нем логин и пароль, который указывался при установке.
+[mysql]
+user=root
+password=
+
+/*
+Создал конфигурационный файл my.ini, поменял в нем строчку [mysql] на [client] чтобы можно было делать дамб не вводя пароль.
+*/
+
+-- 2. Сздайте базу данных example, разместите в ней таблицу users, состоящую из двух столбцов, числового id и строкового name.
+
+mysql   
+CREATE DATABASE example;
+CREATE DATABASE sample;
+USE example;
+CREATE TABLE users (id SERIAL PRIMARY KEY, name VARCHAR(50));
+exit
+
+-- 3. Создайте дамп базы данных example из предыдущего задания, разверните содержимое дампа в новую базу данных sample.
+
+mysqldump example > sample.sql
+mysql sample < sample.sql  
+mysql
+SHOW DATABASES;
+DESCRIBE sample.users;
